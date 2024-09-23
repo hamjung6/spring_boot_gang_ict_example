@@ -6,13 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 
 import edu.ict.ex.page.Criteria;
 import edu.ict.ex.vo.DeptEmpVO;
-import edu.ict.ex.vo.EmpDeptSalgradeVO;
 import edu.ict.ex.vo.EmpDeptVO;
 import edu.ict.ex.vo.EmpVO;
 
 import edu.ict.ex.vo.SalGradeVO;
-import edu.ict.ex.vo.EmpSalGradeVO;
 import edu.ict.ex.vo.SalgradeDeptEmpVO;
+import edu.ict.ex.vo.join.EmpDeptSalgradeVO;
+import edu.ict.ex.vo.join.EmpSalGradeVO;
 
 
 

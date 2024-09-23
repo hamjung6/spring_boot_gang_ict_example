@@ -1,7 +1,9 @@
-package edu.ict.ex.vo;
+package edu.ict.ex.vo.join;
 
 import java.sql.Date;
 
+import edu.ict.ex.vo.DeptVO;
+import edu.ict.ex.vo.SalGradeVO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -96,7 +96,7 @@ public class EmpController {
 	}
 	
 	@GetMapping("/list7")
-	public String list6(Model model) {
+	public String list7(Model model) {
 		System.out.println("list7()..");
 		
 		model.addAttribute("empList", empService.getEmpDeptSalList());
