@@ -12,13 +12,18 @@ console.log("board 모듈..");
 
 let boardService = function() {
 	//console.log("안녕하세요");
-	function list() {
+	function list(callback) {
 
 		$.ajax({
 			type: "GET",
 			url: "/boards/list",
 			success: function(result) {
 				console.log(result);
+
+				if (callback) {
+					callback(result);
+				}
+
 			},
 			error: function(e) {
 				console.log(e);
@@ -27,13 +32,17 @@ let boardService = function() {
 		});
 	} //list()
 
-	function get(id) {
+	function get(id, callback) {
 
 		$.ajax({
 			type: "GET",
 			url: "/boards/" + id,
 			success: function(result) {
 				console.log(result);
+
+				if (callback) {
+					callback(result);
+				}
 			},
 			error: function(e) {
 				console.log(e);

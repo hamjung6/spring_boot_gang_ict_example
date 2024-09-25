@@ -41,7 +41,7 @@ $(document).ready(function(){
                htmls += '<td>'+ this.bid + '</td>'; 
                htmls += '<td>'+ this.bname + '</td>';
                    htmls += '<td>'
-               for(let i=0;i< this.bindent;i++){
+               for(let i=0; i< this.bindent; i++){
                   htmls += '-'
                }
                    htmls += '<a href="/rest_content_view.html?bid=' + this.bid + '">' + this.btitle + '</a></td>';

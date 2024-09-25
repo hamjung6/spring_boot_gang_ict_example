@@ -9,7 +9,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<script src="${pageContext.request.contextPath}/js/boajsrd."></script>
+<script src="${pageContext.request.contextPath}/js/board.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
