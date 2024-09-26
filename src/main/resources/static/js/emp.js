@@ -10,7 +10,7 @@
 
 console.log("emp 모듈..");
 
-let empService = function() {
+let boardService = function() {
 	//console.log("안녕하세요");
 	function list(callback) {
 
@@ -32,7 +32,47 @@ let empService = function() {
 		});
 	} //list()
 
-	function del(empno) {
+	function get(id, callback) {
+
+		$.ajax({
+			type: "GET",
+			url: "/emps/" + id,
+			success: function(result) {
+				console.log(result);
+
+				if (callback) {
+					callback(result);
+				}
+			},
+			error: function(e) {
+				console.log(e);
+			}
+
+		});
+	}
+
+/*	function add(board) {
+
+		$.ajax({
+			type: "POST",
+			url: "/boards/",
+			contentType: 'application/json; charset=utf-8',
+			data: JSON.stringify(board),
+			success: function(result) {
+
+				if (result == "SUCCESS")
+					console.log(result);
+
+			},
+			error: function(e) {
+				console.log(e);
+			}
+
+		});
+	}*/
+
+
+	function del(bid) {
 
 		$.ajax({
 			type: "DELETE",
@@ -49,10 +89,30 @@ let empService = function() {
 
 		});
 	}
+/*
+	function update(board) {
+
+		$.ajax({
+			type: "PUT",
+			url: "/boards/",
+			contentType: 'application/json; charset=utf-8',
+			data: JSON.stringify(board),
+			success: function(result) {
+				console.log("수정된 갯수 : " + result);
+			},
+			error: function(e) {
+				console.log(e);
+			}
+
+		});
+	}*/
+
 
 	return {
 		list: list,
 		get: get,
-		del: del
+		add: add,
+		del: del,
+		update: update
 	}
 }

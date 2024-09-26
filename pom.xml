@@ -81,9 +81,6 @@
          <version>2.3.1</version>
       </dependency>
       
-     
- 
-      
       <!-- log4j 라이브러리 -->   
       <dependency>
          <groupId>org.bgee.log4jdbc-log4j2</groupId>
@@ -91,6 +88,22 @@
          <version>1.16</version>
       </dependency>
       
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-security</artifactId>
+      </dependency>
+      
+      <dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-test</artifactId>
+         <scope>test</scope>
+      </dependency>
+      
+      <!-- 스프링 부트에서는  jsp 태그를 지원 하지 않기 때문에 직접 입력 해야야함 -->
+      <dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-taglibs</artifactId>
+      </dependency>
       
       
    </dependencies>
