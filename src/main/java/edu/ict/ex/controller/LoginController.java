@@ -11,21 +11,16 @@ import lombok.extern.slf4j.Slf4j;
 
 public class LoginController {
 
-//	@GetMapping("/login")
-//	public String login(Model model) {
-//		log.info("login()..");
-//		return "login/login";
-//	}
-	
 	@GetMapping("/login")
 	public String login(Model model) {
 		log.info("login()..");
-		return "login/login2";
+		return "login/login";
 	}
 	
-	/*
-	 * @GetMapping("/index") public String index(Model model) {
-	 * log.info("index().."); return "views/index"; }
-	 */
+//	@GetMapping("/login")
+//	public String login(Model model) {
+//		log.info("login()..");
+//		return "login/login2";
+//	}
 
 }

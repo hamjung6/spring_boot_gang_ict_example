@@ -9,11 +9,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import edu.ict.ex.vo.AuthVO;
+import edu.ict.ex.vo.CartVO;
 import edu.ict.ex.vo.UserVO;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-// 알렉스 아저씨가 말해주는 넣어줘야 할 포맷 형식
+//알렉스 아저씨가 말해주는 넣어줘야할 포맷형식
 @Slf4j
 @Setter
 public class UserDetailsVO implements UserDetails {
@@ -22,13 +23,27 @@ public class UserDetailsVO implements UserDetails {
 	private String password;
 	private List<GrantedAuthority> authorities;
 
+	private CartVO cart;
+
 	public UserDetailsVO(UserVO user) {
-		this.setUsername(user.getUsername());
+		this.username = user.getUsername();
 		this.setPassword(user.getPassword());
 		this.setAuthorities(user);
 	}
 
-	// UserVO에서 권한을 추출하여 UserDetails에서 요구하는 권한 형식으로 만들어줌.
+	public UserDetailsVO(UserVO user, CartVO cart) {
+		this.username = user.getUsername();
+		this.setPassword(user.getPassword());
+		this.setAuthorities(user);
+
+		this.cart = cart;
+	}
+
+	public CartVO getCart() {
+		return cart;
+	}
+
+	// UserVO 에서 권한을 추출하여 UserDetails에서 요구 하는 권한 형식으로 만들어줌
 	public void setAuthorities(UserVO userVO) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
@@ -46,7 +61,7 @@ public class UserDetailsVO implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
+
 		return this.password;
 	}
 
@@ -56,7 +71,7 @@ public class UserDetailsVO implements UserDetails {
 		return this.username;
 	}
 
-	// 계정이 만료되지 않았는가?
+	// 계정이 만료 되지 않았는가?
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
@@ -66,7 +81,6 @@ public class UserDetailsVO implements UserDetails {
 	// 계정이 잠기지 않았는가?
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
