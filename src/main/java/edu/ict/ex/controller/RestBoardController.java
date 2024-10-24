@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.ict.ex.page.Criteria;
+import edu.ict.ex.page.PageVO;
 import edu.ict.ex.service.BoardService;
+import edu.ict.ex.vo.BoardPageVO;
 import edu.ict.ex.vo.BoardVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,6 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+@CrossOrigin
 @RequestMapping("/boards")
 public class RestBoardController {
 
@@ -39,10 +44,17 @@ public class RestBoardController {
 
 	// 자바 객체를 json으로 바꿔서 서비스하고 있음
 	@GetMapping("/list")
-	public List<BoardVO> list() {
-		log.info("list()..");
+	public BoardPageVO list(Criteria criteria) {
+		log.info("list() ..");
 
-		return boardService.getList();
+		BoardPageVO vo = new BoardPageVO();
+
+		vo.setBoards(boardService.getListWithPaging(criteria));
+
+		int total = boardService.getTotal();
+		vo.setPage(new PageVO(criteria, total));
+
+		return vo;
 	}
 
 	// 특정 게시판 번호를 받으면 해당 게시판 정보 서비스
